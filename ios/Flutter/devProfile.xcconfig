@@ -1,0 +1,6 @@
+#include "Generated.xcconfig"
+
+FLUTTER_TARGET=lib/main_dev.dart
+ASSET_PREFIX=dev
+BUNDLE_NAME=テキストSNS Dev
+BUNDLE_DISPLAY_NAME=テキストSNS Dev
