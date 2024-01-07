@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:text_sns/models/public_user.dart';
 import '../flavors.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -14,8 +15,9 @@ class MyHomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           try {
-            final firstData = {"msg": "成功しました！"};
-            await FirebaseFirestore.instance.collection('data').doc().set(firstData);
+            final firstUser = PublicUser(followerCount: 0, followingCount: 0, uid: "first");
+            final firstData = firstUser.toJson();
+            await FirebaseFirestore.instance.collection('public_users').doc(firstUser.uid).set(firstData);
             print("データの書き込みが成功しました！");
           } catch(e) {
             print("アクセスが拒否されました");
