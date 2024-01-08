@@ -12,3 +12,6 @@ flutter run --flavor prod -t lib/main_prod.dart
 dart format --set-exit-if-changed .
 
 flutter analyze .
+
+## 自動生成
+flutter pub run build_runner build --delete-conflicting-outputs
