@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:text_sns/models/public_user/public_user.dart';
+import 'package:get/instance_manager.dart';
+import 'package:text_sns/controllers/my_home_page_controller.dart';
 
 import '../flavors.dart';
 
@@ -9,23 +9,13 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(MyHomePageController());
     return Scaffold(
       appBar: AppBar(
         title: Text(F.title),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () async {
-        try {
-          const data = PublicUser(uid: "third");
-          final json = data.toJson();
-          await FirebaseFirestore.instance
-              .collection('public_users')
-              .doc(data.uid)
-              .set(json);
-          debugPrint("書き込みが成功しました");
-        } catch (e) {
-          debugPrint("アクセスが拒否されました");
-        }
-      }),
+      floatingActionButton: FloatingActionButton(
+          onPressed: controller.onFloatingActionButtonPressed),
       body: Center(
         child: Text(
           'Hello ${F.title}',
