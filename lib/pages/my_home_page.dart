@@ -25,7 +25,7 @@ class MyHomePage extends StatelessWidget {
             return;
           } else {
             final publicUser = PublicUser.fromJson(firstUserJson);
-            debugPrint("ユーザーのID: ${publicUser.uid}"); // first
+            debugPrint("UID: ${publicUser.uid}");
           }
         } catch (e) {
           debugPrint("アクセスが拒否されました");
