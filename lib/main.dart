@@ -8,8 +8,9 @@ import 'package:firebase_core/firebase_core.dart';
 
 FutureOr<void> main() async {
   final flavor = F.appFlavor!;
-  final options = (flavor == Flavor.dev) ? dev.DefaultFirebaseOptions.currentPlatform 
-  : prod.DefaultFirebaseOptions.currentPlatform;
+  final options = (flavor == Flavor.dev)
+      ? dev.DefaultFirebaseOptions.currentPlatform
+      : prod.DefaultFirebaseOptions.currentPlatform;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: options);
   runApp(const App());
