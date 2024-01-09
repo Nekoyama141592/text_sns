@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:text_sns/controllers/auth_controller.dart';
 import 'package:text_sns/controllers/my_home_page_controller.dart';
 
 import '../flavors.dart';
@@ -9,19 +10,26 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(MyHomePageController());
+    Get.put(MyHomePageController());
+    final authController = Get.put(AuthController());
     return Scaffold(
       appBar: AppBar(
         title: Text(F.title),
       ),
-      floatingActionButton: FloatingActionButton(
-          onPressed: controller.onFloatingActionButtonPressed),
-      body: Center(child: Obx(() {
-        return Text(
-          'ユーザーのID ${controller.rxDoc.value?.id ?? "定められていません"}',
-          style: const TextStyle(fontSize: 40.0),
-        );
-      })),
+      body: Obx(() {
+        const style = TextStyle(fontSize: 60.0);
+        if (authController.rxAuthUser.value != null) {
+          return const Text(
+            "Nullではありません",
+            style: style,
+          );
+        } else {
+          return const Text(
+            "Nullです",
+            style: style,
+          );
+        }
+      }),
     );
   }
 }
