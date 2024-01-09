@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:text_sns/controllers/auth_controller.dart';
+import 'package:text_sns/view/pages/my_home_page/components/auth_screen/components/signup_screen.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -17,12 +18,7 @@ class AuthScreen extends StatelessWidget {
               style: style,
             ));
       } else {
-        return InkWell(
-            onTap: controller.onToggleLoginModeButtonPressed,
-            child: const Text(
-              "SignupScreen",
-              style: style,
-            ));
+        return const SignupScreen();
       }
     });
   }
