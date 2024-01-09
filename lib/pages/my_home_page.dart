@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/instance_manager.dart';
+import 'package:get/get.dart';
 import 'package:text_sns/controllers/my_home_page_controller.dart';
 
 import '../flavors.dart';
@@ -16,11 +16,12 @@ class MyHomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: controller.onFloatingActionButtonPressed),
-      body: Center(
-        child: Text(
-          'Hello ${F.title}',
-        ),
-      ),
+      body: Center(child: Obx(() {
+        return Text(
+          'ユーザーのID ${controller.rxDoc.value?.id ?? "定められていません"}',
+          style: const TextStyle(fontSize: 40.0),
+        );
+      })),
     );
   }
 }
