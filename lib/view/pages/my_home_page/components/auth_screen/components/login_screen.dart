@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:text_sns/controllers/auth_controller.dart';
 import 'package:text_sns/view/abstract/auth_state.dart';
+import 'package:text_sns/controllers/auth_controller.dart';
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _SignupScreenState extends AuthState<SignupScreen> {
+class _LoginScreenState extends AuthState<LoginScreen> {
   @override
   Widget titleWidget() {
     return const Text(
-      "新規登録",
+      "ログイン",
       style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
     );
   }
@@ -21,6 +21,6 @@ class _SignupScreenState extends AuthState<SignupScreen> {
   Widget toggleLoginModeButton() {
     return TextButton(
         onPressed: AuthController.to.onToggleLoginModeButtonPressed,
-        child: const Text("ログイン画面へ"));
+        child: const Text("新規登録画面へ"));
   }
 }
