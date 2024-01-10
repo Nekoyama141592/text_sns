@@ -78,6 +78,7 @@ class _SignupScreenState extends State<SignupScreen> {
             // フォームフィールドの情報を変数に保存
             _formKey.currentState!.save();
           }
+          AuthController.to.onPositiveButtonPressed();
         },
         child: const Text("送信"));
   }
