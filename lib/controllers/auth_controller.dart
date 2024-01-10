@@ -42,7 +42,17 @@ class AuthController extends GetxController {
     });
   }
 
-  Future<void> _signInWithEmailAndPassword() async {}
+  Future<void> _signInWithEmailAndPassword() async {
+    final repository = AuthRepository();
+    final result = await repository.signInWithEmailAndPassword(
+        email.trim(), password.trim());
+    result.when(success: (res) {
+      rxAuthUser.value = res;
+      UIHelper.showFlutterToast("ログインが成功しました");
+    }, failure: () {
+      UIHelper.showFlutterToast("ログインが失敗しました");
+    });
+  }
 
   void onSignOutButtonPressed() async {
     await _signOut();
