@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class _SignupScreenState extends State<SignupScreen> {
     return TextFormField(
       decoration: const InputDecoration(hintText: "メールアドレス"),
       validator: (value) {
-        return value!.isEmpty ? "入力を行って下さい" : null;
+        return GetUtils.isEmail(value!) ? null : "正しいメールアドレスを入力して下さい";
       },
     );
   }
@@ -59,7 +60,7 @@ class _SignupScreenState extends State<SignupScreen> {
       obscureText: true, // パスワードを隠す
       decoration: const InputDecoration(hintText: "パスワード"),
       validator: (value) {
-        return value!.isEmpty ? "入力を行って下さい" : null;
+        return value!.length > 7 ? null : "パスワードが短すぎます";
       },
     );
   }
