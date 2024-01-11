@@ -21,6 +21,7 @@ dependencies:
   fluttertoast: ^8.1.2
   firebase_auth: ^4.10.1
   firebase_remote_config: ^4.2.4
+  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -33,6 +34,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - dev.env
+    - prod.env
 
 flavorizr:
   app:
