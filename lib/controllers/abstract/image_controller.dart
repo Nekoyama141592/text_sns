@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:get/get.dart';
+import 'package:text_sns/constant/image_constant.dart';
 import 'package:text_sns/repository/aws_s3_repository.dart';
 import 'package:text_sns/ui_core/ui_helper.dart';
 
@@ -13,7 +14,7 @@ class ImageController extends GetxController {
     result.when(success: (res) {
       rxUint8list.value = res;
     }, failure: () {
-      UIHelper.showFlutterToast("画像の取得に失敗しました");
+      UIHelper.showFlutterToast(ImageConstant.getObjectFailureMsg);
     });
   }
 }
