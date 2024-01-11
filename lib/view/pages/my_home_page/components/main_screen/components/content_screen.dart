@@ -3,18 +3,17 @@ import 'package:get/get.dart';
 import 'package:text_sns/controllers/auth_controller.dart';
 import 'package:text_sns/controllers/main_controller.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class ContentScreen extends StatelessWidget {
+  const ContentScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final mainController = Get.put(MainController());
     final authController = AuthController.to;
     const style = TextStyle(fontSize: 30.0);
     return Column(
       children: [
         Obx(
           () => Text(
-            mainController.rxPublicUser.value?.uid ?? "Nullです",
+            MainController.to.rxPublicUser.value?.uid ?? "Nullです",
             style: style,
           ),
         ),
