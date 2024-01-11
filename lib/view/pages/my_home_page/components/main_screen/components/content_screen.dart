@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:text_sns/controllers/auth_controller.dart';
 import 'package:text_sns/controllers/main_controller.dart';
+import 'package:text_sns/view/common/byte_image.dart';
 
 class ContentScreen extends StatelessWidget {
   const ContentScreen({Key? key}) : super(key: key);
@@ -20,7 +21,9 @@ class ContentScreen extends StatelessWidget {
         const SizedBox(
           height: 20.0,
         ),
-        // TODO: ByteImage(bytes: bytes),
+        Obx(
+          () => ByteImage(bytes: MainController.to.rxUint8list.value),
+        ),
         const SizedBox(
           height: 20.0,
         ),
