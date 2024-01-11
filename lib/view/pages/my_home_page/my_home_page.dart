@@ -22,7 +22,6 @@ class MyHomePage extends StatelessWidget {
         title: Text(F.title),
       ),
       body: Obx(() {
-        const style = TextStyle(fontSize: 60.0);
         final authUser = authController.rxAuthUser.value;
         if (remoteConfigController.rxIsMaintenanceMode.value) {
           return const MaintenanceScreen();
@@ -31,12 +30,7 @@ class MyHomePage extends StatelessWidget {
         } else if (!authUser.emailVerified) {
           return const VerifyEmailScreen();
         } else {
-          return ElevatedButton(
-              onPressed: authController.onSignOutButtonPressed,
-              child: const Text(
-                "ログアウトする",
-                style: style,
-              ));
+          return const MaintenanceScreen();
         }
       }),
     );
