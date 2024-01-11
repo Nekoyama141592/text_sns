@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:text_sns/controllers/edit_controller.dart';
 import 'package:text_sns/view/common/rounded_button.dart';
 import 'package:text_sns/view/common/text_field_container.dart';
 
@@ -12,6 +14,7 @@ class _EditScreenState extends State<EditScreen> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    Get.put(EditController());
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [_titleWidget(), _form(), _positiveButton()],
@@ -36,11 +39,23 @@ class _EditScreenState extends State<EditScreen> {
     return TextFieldContainer(
         child: TextFormField(
       decoration: const InputDecoration(hintText: "ニックネーム"),
+      onSaved: EditController.to.setName,
+      validator: (value) {
+        return value!.isEmpty ? "入力を行って下さい" : null;
+      },
     ));
   }
 
   // 送信するボタン
   Widget _positiveButton() {
-    return const RoundedButton(color: Colors.green, textValue: "更新する");
+    return RoundedButton(
+        color: Colors.green,
+        onPressed: () {
+          if (_formKey.currentState!.validate()) {
+            _formKey.currentState!.save();
+          }
+          EditController.to.onPositiveButtonPressed();
+        },
+        textValue: "更新する");
   }
 }
