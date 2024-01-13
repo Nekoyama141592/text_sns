@@ -5,3 +5,4 @@ linter:
 analyzer:
   exclude:
     - "lib/enums/env_key.dart"
+    - "lib/models/moderation_label/moderation_label.dart"

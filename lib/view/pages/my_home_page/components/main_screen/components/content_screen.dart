@@ -27,6 +27,18 @@ class ContentScreen extends StatelessWidget {
         const SizedBox(
           height: 20.0,
         ),
+        Obx(() {
+          final publicUser = MainController.to.rxPublicUser.value;
+          if (publicUser == null) {
+            return const SizedBox.shrink();
+          } else {
+            final data = publicUser.isAppropriate ? "適切な画像です" : "適切な画像ではありません";
+            return Text(data);
+          }
+        }),
+        const SizedBox(
+          height: 20.0,
+        ),
         ElevatedButton(
             onPressed: authController.onSignOutButtonPressed,
             child: const Text(
