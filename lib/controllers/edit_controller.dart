@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:text_sns/constant/edit_constant.dart';
+import 'package:text_sns/controllers/abstract/simple_form_controller.dart';
 import 'package:text_sns/controllers/auth_controller.dart';
 import 'package:text_sns/controllers/main_controller.dart';
 import 'package:text_sns/core/firestore/doc_ref_core.dart';
@@ -15,22 +16,30 @@ import 'package:text_sns/repository/firestore_repository.dart';
 import 'package:text_sns/ui_core/file_core.dart';
 import 'package:text_sns/ui_core/ui_helper.dart';
 
-class EditController extends GetxController {
+class EditController extends SimpleFormController {
   static EditController get to => Get.find<EditController>();
   final rxUint8list = Rx<Uint8List?>(null);
-  String name = "";
-  void setName(String? value) {
-    if (value == null) return;
-    name = value;
-  }
-
+  @override
+  String get title => EditConstant.title;
+  @override
+  String get hintText => EditConstant.hintText;
+  @override
+  String get validatorMsg => EditConstant.validatorMsg;
+  @override
+  String get positiveButtonText => EditConstant.positiveButtonText;
+  @override
+  String get successMsg => EditConstant.successMsg;
+  @override
+  String get failureMsg => EditConstant.failureMsg;
+  
+  @override
   void onPositiveButtonPressed() async {
     final uint8list = rxUint8list.value;
-    if (name.isEmpty && uint8list == null) return;
+    if (text.isEmpty && uint8list == null) return;
     // 画像をアップロードする
     final repository = AWSS3Repository();
     final bucket = dotenv.get(EnvKey.AWS_S3_USER_IMAGES_BUCKET.name);
-    const object = "s3-second-image.jpg";
+    final object = "${IDCore.uuidV4()}.jpg";
     final data = Stream.value(uint8list!);
     final result = await repository.putObject(bucket, object, data);
     result.when(success: (_) async {
@@ -47,13 +56,13 @@ class EditController extends GetxController {
     final ref = DocRefCore.userUpdateLogDocRef(uid, logId);
     final image =
         ModeratedImage(bucketName: bucketName, fileName: fileName).toJson();
-    final data = UserUpdateLog(image: image, name: name, uid: uid).toJson();
+    final data = UserUpdateLog(image: image, name: text, uid: uid).toJson();
     final result = await repository.createDoc(ref, data);
     result.when(success: (_) {
       final oldPublicUser = MainController.to.rxPublicUser.value;
       if (oldPublicUser == null) return;
       final newPublicUser = oldPublicUser.copyWith(
-        name: name,
+        name: text,
       ); // 一部分のみ更新
       MainController.to.rxPublicUser.value = newPublicUser; // 新しく更新
       UIHelper.showFlutterToast(EditConstant.successMsg);
