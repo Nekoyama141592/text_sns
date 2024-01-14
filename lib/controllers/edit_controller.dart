@@ -31,7 +31,7 @@ class EditController extends SimpleFormController {
   String get successMsg => EditConstant.successMsg;
   @override
   String get failureMsg => EditConstant.failureMsg;
-  
+
   @override
   void onPositiveButtonPressed() async {
     final uint8list = rxUint8list.value;

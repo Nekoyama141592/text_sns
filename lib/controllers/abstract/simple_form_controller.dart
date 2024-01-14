@@ -6,6 +6,7 @@ abstract class SimpleFormController extends GetxController {
     if (value == null) return;
     text = value;
   }
+
   void onPositiveButtonPressed();
   // Constant
   String get title;

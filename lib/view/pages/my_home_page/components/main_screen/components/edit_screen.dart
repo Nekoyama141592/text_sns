@@ -11,15 +11,20 @@ class EditScreen extends StatefulWidget {
 }
 
 class _EditScreenState extends SimpleFormState<EditScreen> {
-  
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(EditController());
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [titleWidget(controller), form(controller), positiveButton(controller), _image()],
+      children: [
+        titleWidget(controller),
+        form(controller),
+        positiveButton(controller),
+        _image()
+      ],
     );
   }
+
   // 画像を選択するアイコン
   Widget _image() {
     return Obx(() {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:text_sns/controllers/auth_controller.dart';
 import 'package:text_sns/view/common/basic_page.dart';
 
 class AccountPage extends StatelessWidget {
@@ -6,12 +7,16 @@ class AccountPage extends StatelessWidget {
   static const path = "/account";
   @override
   Widget build(BuildContext context) {
-    return const BasicPage(
-      appBarTitle: "アカウントページ", 
-      child: Align(
-            alignment: Alignment.center,
-            child: Text("アカウント情報"),
-          ),
-    );
+    final controller = AuthController.to;
+    return BasicPage(
+        appBarTitle: "アカウントページ",
+        child: ListView(
+          children: [
+            ListTile(
+              title: const Text("ログアウトを行う"),
+              onTap: controller.onSignOutButtonPressed,
+            )
+          ],
+        ));
   }
 }
