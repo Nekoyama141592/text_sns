@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:text_sns/constant/auth_constant.dart';
+import 'package:text_sns/enums/reauthenticate_purpose.dart';
 import 'package:text_sns/repository/auth_repository.dart';
 import 'package:text_sns/ui_core/dialog_core.dart';
 import 'package:text_sns/ui_core/ui_helper.dart';
@@ -80,6 +81,7 @@ class AuthController extends GetxController {
   void _toggleIsLoginMode() => rxIsLoginMode.value = !rxIsLoginMode.value;
 
   void onEditEmailButtonPressed() {
-    Get.toNamed(ReauthenticatePage.generatePath("updateEmail"));
+    Get.toNamed(ReauthenticatePage.generatePath(
+        ReauthenticatePurpose.updateEmail.name));
   }
 }
