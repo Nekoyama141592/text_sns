@@ -25,6 +25,10 @@ class AccountPage extends StatelessWidget {
               );
             }),
             ListTile(
+              title: const Text("パスワードを更新する"),
+              onTap: controller.onUpdatePasswordTileTapped,
+            ),
+            ListTile(
               title: const Text("ログアウトを行う"),
               onTap: controller.onSignOutButtonPressed,
             )

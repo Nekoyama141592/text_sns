@@ -84,4 +84,10 @@ class AuthController extends GetxController {
     Get.toNamed(ReauthenticatePage.generatePath(
         ReauthenticatePurpose.updateEmail.name));
   }
+
+  void onUpdatePasswordTileTapped() {
+    final String purpose = ReauthenticatePurpose.updatePassword.name;
+    final String path = ReauthenticatePage.generatePath(purpose);
+    Get.toNamed(path);
+  }
 }
