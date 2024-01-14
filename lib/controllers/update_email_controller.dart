@@ -25,7 +25,8 @@ class UpdateEmailController extends SimpleFormController {
     final result = await repository.verifyBeforeUpdateEmail(user, text);
     result.when(success: (_) {
       UIHelper.showFlutterToast(successMsg);
-      Get.back(); // ページを一つ戻る
+      Get.back();
+      Get.back(); // ページを二つ戻る
     }, failure: () {
       UIHelper.showFlutterToast(failureMsg);
     });
