@@ -3,6 +3,7 @@ import 'package:text_sns/controllers/abstract/simple_form_controller.dart';
 import 'package:text_sns/controllers/auth_controller.dart';
 import 'package:text_sns/enums/reauthenticate_purpose.dart';
 import 'package:text_sns/repository/auth_repository.dart';
+import 'package:text_sns/ui_core/dialog_core.dart';
 import 'package:text_sns/ui_core/ui_helper.dart';
 import 'package:text_sns/ui_core/validator_core.dart';
 import 'package:text_sns/view/pages/reauthenticate_page.dart';
@@ -45,7 +46,10 @@ class ReauthenticateController extends SimpleFormController {
           Get.toNamed(UpdatePasswordPage.path);
           break;
         case ReauthenticatePurpose.deleteUser:
-          // TODO: ユーザーを削除する処理
+          DialogCore.cupertinoAlertDialog("ユーザーを削除しますが本当によろしいですか？", "最終確認", () {
+            Get.back(); // ダイアログを閉じる
+            AuthController.to.deleteUser();
+          });
           break;
       }
       UIHelper.showFlutterToast(successMsg);

@@ -31,6 +31,13 @@ class AccountPage extends StatelessWidget {
             ListTile(
               title: const Text("ログアウトを行う"),
               onTap: controller.onSignOutButtonPressed,
+            ),
+            ListTile(
+              title: const Text(
+                "ユーザーを削除する",
+                style: TextStyle(color: Colors.red),
+              ),
+              onTap: controller.onDeleteUserTileTapped,
             )
           ],
         ));
