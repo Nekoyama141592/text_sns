@@ -3,6 +3,7 @@ import 'package:text_sns/controllers/abstract/simple_form_controller.dart';
 import 'package:text_sns/controllers/auth_controller.dart';
 import 'package:text_sns/repository/auth_repository.dart';
 import 'package:text_sns/ui_core/ui_helper.dart';
+import 'package:text_sns/ui_core/validator_core.dart';
 import 'package:text_sns/view/pages/update_email_page.dart';
 
 class ReauthenticateController extends SimpleFormController {
@@ -11,7 +12,7 @@ class ReauthenticateController extends SimpleFormController {
   @override
   String get hintText => "現在のパスワード";
   @override
-  String get validatorMsg => "8文字以上のパスワードを入力して下さい";
+  String? Function(String? p1)? get validator => ValidatorCore.password;
   @override
   String get positiveButtonText => "送信";
   @override
@@ -23,7 +24,7 @@ class ReauthenticateController extends SimpleFormController {
 
   @override
   void onPositiveButtonPressed() async {
-    if (text.length < 8) return; // パスワードが8文字より短ければ終了させる
+    if (!ValidatorCore.isValidPassword(text)) return; // パスワードが有効でなければ終了させる
     final repository = AuthRepository();
     final user = AuthController.to.rxAuthUser.value;
     if (user == null) return;
