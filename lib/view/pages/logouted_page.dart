@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:text_sns/constant/account_constant.dart';
 import 'package:text_sns/view/common/basic_page.dart';
 
 class LogoutedPage extends StatelessWidget {
@@ -10,7 +11,7 @@ class LogoutedPage extends StatelessWidget {
         child: Align(
       alignment: Alignment.center,
       child: Text(
-        "ログアウトが完了しました。お疲れ様でした。",
+        AccountConstant.logoutedPageMsg,
         style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
       ),
     ));

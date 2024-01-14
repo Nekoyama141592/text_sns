@@ -16,4 +16,7 @@ class AuthConstant {
   static const toLoginScreenText = "ログイン画面へ";
   static const loginTitle = "ログイン";
   static const toSignupScreenText = "新規登録画面へ";
+
+  static const confirmLogoutContent = "ログアウトを行いますがよろしいですか？";
+  static const confirmLogoutTitle = "ログアウトの確認";
 }

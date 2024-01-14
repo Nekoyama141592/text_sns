@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:text_sns/constant/account_constant.dart';
 import 'package:text_sns/controllers/reauthenticate_controller.dart';
 import 'package:text_sns/view/abstract/simple_form_state.dart';
 import 'package:text_sns/view/common/basic_page.dart';
@@ -17,6 +18,8 @@ class _ReauthenticatePageState extends SimpleFormState<ReauthenticatePage> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ReauthenticateController());
-    return BasicPage(appBarTitle: "再認証を行う", child: buildWidget(controller));
+    return BasicPage(
+        appBarTitle: AccountConstant.reauthenticatePageTitle,
+        child: buildWidget(controller));
   }
 }

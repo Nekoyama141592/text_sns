@@ -66,7 +66,8 @@ class AuthController extends GetxController {
   }
 
   void onSignOutButtonPressed() async {
-    DialogCore.cupertinoAlertDialog("ログアウトを行いますがよろしいですか？", "ログアウトの確認",
+    DialogCore.cupertinoAlertDialog(
+        AuthConstant.confirmLogoutContent, AuthConstant.confirmLogoutTitle,
         () async {
       await _signOut();
     });
