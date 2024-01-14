@@ -5,7 +5,7 @@ import 'package:text_sns/repository/auth_repository.dart';
 import 'package:text_sns/ui_core/dialog_core.dart';
 import 'package:text_sns/ui_core/ui_helper.dart';
 import 'package:text_sns/view/pages/logouted_page.dart';
-import 'package:text_sns/view/pages/update_email_page.dart';
+import 'package:text_sns/view/pages/reauthenticate_page.dart';
 
 class AuthController extends GetxController {
   static AuthController get to => Get.find<AuthController>();
@@ -80,6 +80,6 @@ class AuthController extends GetxController {
   void _toggleIsLoginMode() => rxIsLoginMode.value = !rxIsLoginMode.value;
 
   void onEditEmailButtonPressed() {
-    Get.toNamed(UpdateEmailPage.path);
+    Get.toNamed(ReauthenticatePage.generatePath("updateEmail"));
   }
 }
