@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:text_sns/constant/post_constant.dart';
 import 'package:text_sns/core/firestore/qury_core.dart';
 import 'package:text_sns/models/moderated_image/moderated_image.dart';
 import 'package:text_sns/models/post/post.dart';
@@ -30,7 +31,7 @@ class PostsController extends GetxController {
         qDocInfos.add(qDocInfo);
       }
     }, failure: () {
-      UIHelper.showFlutterToast("投稿の取得に失敗しました");
+      UIHelper.showFlutterToast(PostConstant.getPostFailureMsg);
     });
     super.onInit();
   }

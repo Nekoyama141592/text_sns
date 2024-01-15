@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:text_sns/constant/post_constant.dart';
 import 'package:text_sns/controllers/main_controller.dart';
 import 'package:text_sns/repository/firestore_repository.dart';
 import 'package:text_sns/typedefs/firestore_typedef.dart';
@@ -7,7 +8,9 @@ import 'package:text_sns/ui_core/ui_helper.dart';
 
 class PostCore {
   static void onDeleteIconTapped(QDoc postDoc) {
-    DialogCore.cupertinoAlertDialog("投稿を削除しますがよろしいですか？", "投稿の削除", () async {
+    DialogCore.cupertinoAlertDialog(
+        PostConstant.confirmDeletePostMsg, PostConstant.confirmDeletePostTitle,
+        () async {
       Get.back(); // ダイアログを閉じる
       await _deletePost(postDoc);
     });
@@ -19,9 +22,9 @@ class PostCore {
     final result = await repository.deleteDoc(ref);
     result.when(success: (_) {
       MainController.to.deletePostIds.add(postDoc.id);
-      UIHelper.showFlutterToast("投稿の削除が成功しました");
+      UIHelper.showFlutterToast(PostConstant.deletePostSuccessMsg);
     }, failure: () {
-      UIHelper.showFlutterToast("投稿の削除に失敗しました");
+      UIHelper.showFlutterToast(PostConstant.deletePostFailureMsg);
     });
   }
 }
