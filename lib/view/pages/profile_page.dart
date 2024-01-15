@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:text_sns/constant/profile_constant.dart';
 import 'package:text_sns/controllers/profile_controller.dart';
 import 'package:text_sns/view/common/basic_page.dart';
 import 'package:get/get.dart';
@@ -20,7 +21,7 @@ class ProfilePage extends HookWidget {
     }, []);
     const style = TextStyle(fontSize: 30.0);
     return BasicPage(
-        appBarTitle: "自分のプロフィール",
+        appBarTitle: ProfileConstant.profilePageTitle,
         child: Center(
           child: Column(
             children: [
@@ -47,8 +48,9 @@ class ProfilePage extends HookWidget {
                 if (publicUser == null) {
                   return const SizedBox.shrink();
                 } else {
-                  final data =
-                      publicUser.isAppropriate ? "適切な画像です" : "適切な画像ではありません";
+                  final data = publicUser.isAppropriate
+                      ? ProfileConstant.validImageMsg
+                      : ProfileConstant.invalidImageMsg;
                   return Text(
                     data,
                     style: style,
