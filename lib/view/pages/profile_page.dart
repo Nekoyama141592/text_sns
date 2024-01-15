@@ -4,6 +4,7 @@ import 'package:text_sns/controllers/profile_controller.dart';
 import 'package:text_sns/view/common/basic_page.dart';
 import 'package:get/get.dart';
 import 'package:text_sns/view/common/byte_image.dart';
+import 'package:text_sns/view/common/posts_screen/posts_screen.dart';
 
 class ProfilePage extends HookWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -22,7 +23,6 @@ class ProfilePage extends HookWidget {
         appBarTitle: "自分のプロフィール",
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Obx(
                 () => Text(
@@ -58,6 +58,7 @@ class ProfilePage extends HookWidget {
               const SizedBox(
                 height: 20.0,
               ),
+              Expanded(child: PostsScreen(controller: controller)),
             ],
           ),
         ));
