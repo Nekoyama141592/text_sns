@@ -1,3 +1,5 @@
+※ このソースコードはUdemyのレッスン内で扱っている教材の完成形です。
+
 # Udemy講座
 https://www.udemy.com/course/flutter-firebase-aws/?referralCode=1B86E06336C03FD7AE08
 (このリンクを経由してコースが購入されると、講師の売り上げとしてカウントされます。)
@@ -8,12 +10,7 @@ https://www.udemy.com/course/flutter-firebase-aws/?referralCode=1B86E06336C03FD7
 ## sub_title
 Flutter3対応。iOSとAndroidを同時に開発できるFlutterでモバイルアプリ開発に挑戦しよう。Firebase、AWSと連携し、重要なアプリの基本機能を作成。
 
-### about
-この講座について
-
-2024年1月に公開した比較的新しい講義のため、受講者数が少なくなっています。気軽にご購入していただけると幸いです。
-
-内容
+## 内容
 
 どのFlutterアプリでも使用されるような認証、ストレージ、データ通信などの重要な機能を丁寧に作成していきます。
 
